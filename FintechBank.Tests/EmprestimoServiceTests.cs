@@ -1,4 +1,5 @@
 using Xunit;
+using FintechBank.App;
 
 namespace FintechBank.Tests
 {
@@ -15,10 +16,10 @@ namespace FintechBank.Tests
         [InlineData(10000.00, 10, 800, 1050.00)]
         [InlineData(10000.00, 10, 600, 1120.00)]
         [InlineData(10000.00, 10, 400, 1200.00)]
-        public void CalcularParcela_ComJurosPorScore_DeveRetornarValorCorreto(decimal valorEmprestimo, int parcelas, int score, decimal valorParcelaEsperado)
+        public void CalcularValorParcela_ComJurosPorScore_DeveRetornarValorCorreto(decimal valorEmprestimo, int parcelas, int score, decimal valorParcelaEsperado)
         {
             // Act
-            decimal valorCalculado = _emprestimoService.CalcularParcela(valorEmprestimo, parcelas, score);
+            decimal valorCalculado = _emprestimoService.CalcularValorParcela(valorEmprestimo, parcelas, score);
 
             // Assert
             Assert.Equal(valorParcelaEsperado, valorCalculado);
@@ -30,7 +31,7 @@ namespace FintechBank.Tests
         public void AprovarEmprestimo_PorMargemConsignavel_DeveRetornarResultadoEsperado(decimal renda, decimal valorParcela, bool resultadoEsperado)
         {
             // Act
-            bool resultado = _emprestimoService.AprovarEmprestimoMargem(renda, valorParcela);
+            bool resultado = _emprestimoService.AprovarEmprestimo(renda, valorParcela);
 
             // Assert
             Assert.Equal(resultadoEsperado, resultado);

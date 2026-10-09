@@ -1,4 +1,5 @@
 using Xunit;
+using FintechBank.App;
 
 namespace FintechBank.Tests
 {
@@ -28,10 +29,10 @@ namespace FintechBank.Tests
         [Theory]
         [InlineData(1000.00, 500.00, 1200.00, true)]
         [InlineData(1000.00, 500.00, 1600.00, false)]
-        public void ValidarSaque_DeveRetornarResultadoEsperado(decimal saldo, decimal limite, decimal valorSaque, bool resultadoEsperado)
+        public void PodeRealizarSaque_DeveRetornarResultadoEsperado(decimal saldo, decimal limite, decimal valorSaque, bool resultadoEsperado)
         {
             // Act
-            bool resultado = _contaCorrenteService.ValidarSaque(saldo, limite, valorSaque);
+            bool resultado = _contaCorrenteService.PodeRealizarSaque(saldo, limite, valorSaque);
 
             // Assert
             Assert.Equal(resultadoEsperado, resultado);
